@@ -2,14 +2,12 @@ import cv2
 from server import ImageSocket
 import time
 
-HOSTNAME = '129.21.57.78'
-PORT = 12456
 
-def send_images(framerate=30, encoding=None):
+def send_images(hostname, port, framerate=30, encoding=None):
     interval = 1/float(framerate)
 
     sock = ImageSocket()
-    sock.connect((HOSTNAME, PORT))
+    sock.connect((hostname, port))
 
     cam = cv2.VideoCapture(0)
 
@@ -37,4 +35,7 @@ def send_images(framerate=30, encoding=None):
         sock.close()
 
 if __name__ == '__main__':
-    send_images()
+    HOSTNAME = '129.21.57.78'
+    PORT = 12456
+    
+    send_images(HOSTNAME, PORT)

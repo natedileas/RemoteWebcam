@@ -1,13 +1,13 @@
-import cv2
 import queue
 
-from Sever import setup
+import cv2
 
-def example_main():
-    hostname = '129.21.57.78'
-    port = 12456
+import Server
 
-    server = setup(hostname, port)
+
+def example_main(hostname, port):    
+
+    server = Server.setup(hostname, port)
 
     while True:
         try:
@@ -25,4 +25,7 @@ def example_main():
             break
 
 if __name__ == '__main__':
-    example_main()
+    HOSTNAME = '129.21.57.78'
+    PORT = 12456
+
+    example_main(HOSTNAME, PORT)
